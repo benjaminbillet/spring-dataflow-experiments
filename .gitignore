@@ -3,12 +3,9 @@
 
 # Log file
 *.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+*.log.*
+*.log.gz
+*.log.*.gz
 
 # Package Files #
 *.jar
@@ -21,3 +18,58 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Generated files
+target/**
+
+# VS Code
+.vscode/
+
+# Eclipse
+.project
+.metadata
+tmp/
+tmp/**/*
+*.tmp
+local.properties
+.classpath
+.settings/
+.factorypath
+
+# Intellij
+.idea/
+classes/
+out/
+target/
+*.iml
+
+# Gradle
+.gradle/
+/build/
+
+# Gradle wrapper
+!gradle/wrapper/gradle-wrapper.jar
+
+# Maven wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# Maven
+pom.xml.versionsBackup
+
+# MacOS X
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# infra
+output-lambda.yaml
+aws-iam-authenticator
+.terraform
+version.txt
+
+# others
+local/sparc-log/**
+local/*.pem
+local/__pycache__
