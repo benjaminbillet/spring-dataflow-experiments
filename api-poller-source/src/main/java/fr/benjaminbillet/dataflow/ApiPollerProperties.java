@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,11 +14,12 @@ import javax.validation.constraints.NotNull;
 @Setter
 @ConfigurationProperties("api-poller")
 @Configuration
+@Validated
 public class ApiPollerProperties {
 
   @NotBlank
   private String uri;
 
-  @NotNull
-  private HttpMethod verb = HttpMethod.GET;
+  @NotBlank
+  private String verb = HttpMethod.GET.toString();
 }
