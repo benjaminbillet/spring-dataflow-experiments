@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
@@ -30,5 +31,9 @@ public class InMemoryStore {
 
   public Optional<String> lookup(String key) {
     return Optional.ofNullable(store.get(key));
+  }
+
+  public Set<String> listKeys() {
+    return store.keySet();
   }
 }

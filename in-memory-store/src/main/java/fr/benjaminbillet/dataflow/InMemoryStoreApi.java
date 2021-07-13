@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.Size;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,6 +26,14 @@ public class InMemoryStoreApi {
       return ResponseEntity.notFound().build();
     }
     return ResponseEntity.ok(result.get());
+  }
+
+  @RequestMapping(value = "/api/store/keys",
+      produces = {"application/json"},
+      method = RequestMethod.GET)
+  public ResponseEntity<Set<String>> listKeys() {
+    Set<String> keys = inMemoryStore.listKeys();
+    return ResponseEntity.ok(keys);
   }
 
 }

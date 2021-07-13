@@ -1,14 +1,20 @@
 # Spring Dataflow experiments
 
+## Run Confluent and Spring DataFlow stacks locally
+
+```
+./run.sh
+```
+
 ## Build
 
 ```
 mvn clean package
 ```
 
-## Run locally
+## Run services locally
 
-API Poller Source:
+### API Poller Source
 
 ```
 java -jar api-poller-source/target/api-poller-source-1.0-SNAPSHOT.jar \
@@ -17,7 +23,7 @@ java -jar api-poller-source/target/api-poller-source-1.0-SNAPSHOT.jar \
     --spring.cloud.stream.poller.fixedDelay=5000
 ```
 
-JOLT transformer:
+### JOLT transformer
 
 ```
 java -jar jolt-transformer/target/jolt-transformer-1.0-SNAPSHOT.jar \
@@ -26,7 +32,7 @@ java -jar jolt-transformer/target/jolt-transformer-1.0-SNAPSHOT.jar \
     --spring.cloud.stream.bindings.output.destination=users
 ```
 
-In-memory key-value store:
+### In-memory key-value store
 
 ```
 java -jar in-memory-store/target/in-memory-store-1.0-SNAPSHOT.jar \
@@ -34,3 +40,7 @@ java -jar in-memory-store/target/in-memory-store-1.0-SNAPSHOT.jar \
     --spring.cloud.stream.bindings.input.destination=users \
     --server.port=9999
 ```
+
+GET `http://localhost:9999/api/store/keys` for listing keys.
+
+GET `http://localhost:9999/api/store/<some id>` to get data associated to a key.
