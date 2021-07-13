@@ -21,7 +21,8 @@ public class InMemoryStore {
   @Bean
   public Consumer<String> store() {
     return data -> {
-      String key = JsonPath.parse(data).read(properties.getKeyJsonPath());
+      Object rawKey = JsonPath.parse(data).read(properties.getKeyJsonPath());
+      String key = rawKey.toString();
       store.put(key, data);
       log.info("Stored data: {}, {}", key, data);
     };

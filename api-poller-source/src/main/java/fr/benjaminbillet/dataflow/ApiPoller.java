@@ -4,12 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.util.Collections;
 import java.util.function.Supplier;
 
@@ -24,6 +21,7 @@ public class ApiPoller {
   @Bean
   public Supplier<String> sendEvents() {
     return () -> {
+      log.info("Polling {}", properties.getUri());
       ResponseEntity<String> response = restTemplate.exchange(properties.getUri(), properties.getVerb(), null, String.class, Collections.emptyMap());
       String data = response.getBody();
       log.info("Polled data from {}: {}", properties.getUri(), data);

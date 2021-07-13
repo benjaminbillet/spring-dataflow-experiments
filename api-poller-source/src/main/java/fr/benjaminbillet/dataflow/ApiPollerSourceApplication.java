@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JoltTransformerApplication {
+public class ApiPollerSourceApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(JoltTransformerApplication.class, args);
+    SpringApplication.run(ApiPollerSourceApplication.class, args);
   }
 
 }
