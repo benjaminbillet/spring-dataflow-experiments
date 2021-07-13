@@ -19,7 +19,7 @@ public class InMemoryStore {
   private final Map<String, String> store = new ConcurrentHashMap<>();
 
   @Bean
-  public Consumer<String> process() {
+  public Consumer<String> store() {
     return data -> {
       String key = JsonPath.parse(data).read(properties.getKeyJsonPath());
       store.put(key, data);
