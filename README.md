@@ -8,8 +8,18 @@
 
 ## Build
 
+JAR artifacts:
 ```
 mvn clean package
+```
+
+Docker images:
+```
+docker build -f api-poller-source/Dockerfile -t benjaminbillet/api-poller-source api-poller-source
+
+docker build -f jolt-transformer/Dockerfile -t benjaminbillet/jolt-transformer jolt-transformer
+
+docker build -f in-memory-store/Dockerfile -t benjaminbillet/in-memory-store in-memory-store
 ```
 
 ## Run services locally
