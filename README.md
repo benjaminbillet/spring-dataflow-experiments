@@ -15,11 +15,11 @@ mvn clean package
 
 Docker images:
 ```
-docker build -f api-poller-source/Dockerfile -t benjaminbillet/api-poller-source api-poller-source
+docker build -f api-poller-source/Dockerfile -t benjaminbillet/api-poller-source:1.0.0 api-poller-source
 
-docker build -f jolt-transformer/Dockerfile -t benjaminbillet/jolt-transformer jolt-transformer
+docker build -f jolt-transformer/Dockerfile -t benjaminbillet/jolt-transformer:1.0.0 jolt-transformer
 
-docker build -f in-memory-store/Dockerfile -t benjaminbillet/in-memory-store in-memory-store
+docker build -f in-memory-store/Dockerfile -t benjaminbillet/in-memory-store:1.0.0 in-memory-store
 ```
 
 ## Run services locally

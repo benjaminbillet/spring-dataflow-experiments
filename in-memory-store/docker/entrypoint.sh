@@ -2,4 +2,5 @@
 set -e
 
 echo "Running application..."
-exec java -jar ./*.jar
+exec java -jar ./*.jar $APP_ARGS
+
