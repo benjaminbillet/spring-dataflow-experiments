@@ -18,8 +18,8 @@ public class InMemoryStoreApi {
   private final InMemoryStore inMemoryStore;
 
   @RequestMapping(value = "/api/store/{key}",
-      produces = {"application/json"},
-      method = RequestMethod.GET)
+    produces = {"application/json"},
+    method = RequestMethod.GET)
   public ResponseEntity<String> getData(@Size(min = 1) @PathVariable("key") String key) {
     Optional<String> result = inMemoryStore.lookup(key);
     if (result.isEmpty()) {
@@ -29,8 +29,8 @@ public class InMemoryStoreApi {
   }
 
   @RequestMapping(value = "/api/store/keys",
-      produces = {"application/json"},
-      method = RequestMethod.GET)
+    produces = {"application/json"},
+    method = RequestMethod.GET)
   public ResponseEntity<Set<String>> listKeys() {
     Set<String> keys = inMemoryStore.listKeys();
     return ResponseEntity.ok(keys);

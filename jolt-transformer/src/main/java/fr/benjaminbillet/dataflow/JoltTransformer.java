@@ -20,7 +20,7 @@ public class JoltTransformer {
 
   @Bean
   public Function<String, String> joltTransform() {
-    return (String input) -> {
+    return input -> {
       Chainr chain = Chainr.fromSpec(JsonUtils.jsonToList(properties.getJoltSpecification().getData()));
       try {
         Object inputObject = objectMapper.readValue(input, Object.class);
@@ -31,7 +31,7 @@ public class JoltTransformer {
 
         return output;
       } catch (Exception e) {
-        e.printStackTrace();
+        log.error("Transformation error {}", input, e);
         throw new RuntimeException(e);
       }
     };

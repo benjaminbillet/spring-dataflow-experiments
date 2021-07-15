@@ -1,5 +1,6 @@
 package fr.benjaminbillet.dataflow;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,7 @@ public class JoltSpecResource {
   public JoltSpecResource(String data) {
     data = data.trim();
 
-    if (data.startsWith("{")) {
+    if (isValidJson(data)) {
       // this is an inline JOLT spec, take it directly
       this.data = data;
       return;
@@ -38,5 +39,15 @@ public class JoltSpecResource {
 
   public static String loadUrlResource(URL url) throws IOException {
     return IOUtils.toString(url.openStream(), StandardCharsets.UTF_8);
+  }
+
+  public static boolean isValidJson(String data) {
+    try {
+      ObjectMapper mapper = new ObjectMapper();
+      mapper.readTree(data);
+      return true;
+    } catch (IOException e) {
+      return false;
+    }
   }
 }
