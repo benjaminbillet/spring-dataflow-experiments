@@ -6,6 +6,18 @@
 ./run.sh
 ```
 
+## Run JupyterLab locally
+
+Start:
+```
+docker-compose -f jupyter/docker-compose.yml up -d
+```
+
+Stop:
+```
+docker-compose -f jupyter/docker-compose.yml stop
+```
+
 ## Build
 
 JAR artifacts:
